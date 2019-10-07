@@ -1,27 +1,20 @@
-.side-bar
-  .header
-    %h3.header__name
-      = current_user.name
-    %ul.header__lists
-      %li.list
-        = link_to do
-          = fa_icon 'pencil-square-o', class: 'icon'
-      %li.list
-        = link_to edit_user_path(current_user) do
-          = fa_icon 'cog', class: 'icon'
-  .groups
-    .group
-      .group__name
-        グループ名
-      .group__message
-        新着メッセージ
-    .group
-      .group__name
-        グループ名
-      .group__message
-        新着メッセージ
-    .group
-      .group__name
-        グループ名
-      .group__message
-        新着メッセージ
+.contents
+  .contents__left
+    .contents__left__top
+      .contents__left__top__box
+        %p.contents__left__top__box__username
+          name
+        .contents__left__top__box__icons
+          =link_to new_group_path , class: "contents__left__top__box__icons__icon" do
+            =fa_icon "edit"
+          =link_to edit_user_path(current_user), class: "contents__left__top__box__icons__icon" do
+            =fa_icon "cog"  
+  
+    .contents__left__body
+      -current_user.groups.each do |group|
+        .contents__left__body__groups
+          = link_to group_messages_path(group) do
+            %p.contents__left__body__groups__name
+              = group_name
+            %p.contents__left__body__groups__message
+              メッセージはありません。

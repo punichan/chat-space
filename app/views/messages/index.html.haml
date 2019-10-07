@@ -9,9 +9,9 @@
       %p.contents__left__top__box__username
        name
       .contents__left__top__box__icons
-       =link_to "#", class: "contents__left__top__box__icons__icon" do
+       =link_to new_group_path , class: "contents__left__top__box__icons__icon" do
         =fa_icon "edit"
-       =link_to "#", class: "contents__left__top__box__icons__icon" do
+       =link_to edit_user_path(current_user), class: "contents__left__top__box__icons__icon" do
         =fa_icon "cog"  
    
     .contents__left__body
