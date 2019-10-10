@@ -15,6 +15,6 @@
         .contents__left__body__groups
           = link_to group_messages_path(group) do
             %p.contents__left__body__groups__name
-              = group_name
+              = group.name
             %p.contents__left__body__groups__message
-              メッセージはありません。
+              = group.show_last_message
