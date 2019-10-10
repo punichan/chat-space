@@ -1,69 +1,46 @@
 %html
- %body
-  .head
-   %p グループを作成しました。
-  .contents
-   .contents__left
-    .contents__left__top
-     .contents__left__top__box
-      %p.contents__left__top__box__username
-       name
-      .contents__left__top__box__icons
-       =link_to new_group_path , class: "contents__left__top__box__icons__icon" do
-        =fa_icon "edit"
-       =link_to edit_user_path(current_user), class: "contents__left__top__box__icons__icon" do
-        =fa_icon "cog"  
+  %body
+    .head
+    .contents
+      .contents__left
+        .contents__left__top
+          .contents__left__top__box
+            %p.contents__left__top__box__username
+              name
+            .contents__left__top__box__icons
+              =link_to new_group_path , class: "contents__left__top__box__icons__icon" do
+                =fa_icon "edit"
+              =link_to edit_user_path(current_user), class: "contents__left__top__box__icons__icon" do
+                =fa_icon "cog"  
    
-    .contents__left__body
-     .contents__left__body__groups
-      %p.contents__left__body__groups__name
-       group
-      %p.contents__left__body__groups__message
-       hollo world
-
-     .contents__left__body__groups
-      %p.contents__left__body__groups__name
-       group
-      %p.contents__left__body__groups__message
-       hollo world
+        .contents__left__body
+          .contents__left__body__groups
+            %p.contents__left__body__groups__name
+              group
+            %p.contents__left__body__groups__message
+              hollo world
   
-   .contents__right
-    .contents__right__top
-     .contents__right__top__box
-      %p.contents__right__top__box__group-name
-       group
-      %ul.contents__right__top__box__menber-name
-       munber:
-       %lu hoge1 
-       %lu hoge2
+      .contents__right
+        .contents__right__top
+          .contents__right__top__box
+            %p.contents__right__top__box__group-name
+              group
+            %ul.contents__right__top__box__menber-name
+              munber:
+              %lu hoge1 
+              %lu hoge2
 
-     = link_to "a", class: "contents__right__top__edit-btn" do
-      %p.contents__right__top__edit-btn__icon Edit
+          = link_to "a", class: "contents__right__top__edit-btn" do
+            %p.contents__right__top__edit-btn__icon Edit
 
-    .contents__right__body
-     .contents__right__body__box
-      .contents__right__body__box__message
-       %p.contents__right__body__box__message__username
-        hoge
-       %p.contents__right__body__box__message__date
-        2019/10/3(wed) 10:00:00
-      %p.contents__right__body__box__comment
-       hello world
+        .contents__right__body
+          =render @messages
 
-     .contents__right__body__box
-      .contents__right__body__box__message
-       %p.contents__right__body__box__message__username
-        hoge
-       %p.contents__right__body__box__message__date
-        2019/10/3(wed) 10:00:00
-      %p.contents__right__body__box__comment
-       hello world
-
-
-    .contents__right__footer
-     %from.contents__right__footer__textbox
-      %input{type: "text", name: "text", class: "contents__right__footer__textbox__form", placeholder: "TEXT"}
-      %input{type: "submit", class: "contents__right__footer__textbox__btn", value: "SEND"}
-      %label.contents__right__footer__textbox__image{for: "contents__right__footer__textbox__image__id"}
-       %i.fa.fa-picture-o
-       %input{type:"file",style: "display:none;",id: "contents__right__footer__textbox__image__id"}
+        .contents__right__footer
+          =form_for [@group, @message] do |f|
+            .contents__right__footer__textbox
+              =f.text_field :content, class: 'contents__right__footer__textbox__form', placeholder: 'type a message' 
+              =f.submit 'send', class: 'contents__right__footer__textbox__btn'
+              =f.label :image, class: 'contents__right__footer__textbox__image' do
+                =fa_icon 'picture-o'
+                =f.file_field :image,style: "display:none;",id: "contents__right__footer__textbox__image__id"
