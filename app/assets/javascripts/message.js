@@ -38,7 +38,7 @@ $(function(){
       $('.contents__right__body').animate({
         scrollTop: $('.contents__right__body')[0].scrollHeight
       });
-      $('#message_content').val('')
+      $('#new_message')[0].reset();
       $('.contents__right__footer__textbox__btn').attr('disabled',false);
     })
     .fail(function(){
