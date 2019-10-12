@@ -40,7 +40,7 @@
           =form_for [@group, @message] do |f|
             .contents__right__footer__textbox
               =f.text_field :content, class: 'contents__right__footer__textbox__form', placeholder: 'type a message' 
-              =f.submit 'send', class: 'contents__right__footer__textbox__btn'
-              =f.label :image, class: 'contents__right__footer__textbox__image' do
+              =f.label :image, for: "contents__right__footer__textbox__image", class: 'contents__right__footer__textbox__image' do
                 =fa_icon 'picture-o'
-                =f.file_field :image,style: "display:none;",id: "contents__right__footer__textbox__image__id"
+                =f.file_field :image, style: "display:none;",id: "contents__right__footer__textbox__image"
+              =f.submit 'send', class: 'contents__right__footer__textbox__btn'
