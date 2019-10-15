@@ -44,10 +44,6 @@ $(document).on('turbolinks:load', function() {
         if(input.length === 0 ){
           $('#user-search-result').empty();
         }
-
-      // else{
-      //   // appendErrMsgToHTML("一致するユーザーはいません");
-      // }
        })
 
        .fail(function(){
