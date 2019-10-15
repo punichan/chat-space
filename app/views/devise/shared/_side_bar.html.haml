@@ -3,7 +3,7 @@
     .contents__left__top
       .contents__left__top__box
         %p.contents__left__top__box__username
-          name
+          = current_user.name
         .contents__left__top__box__icons
           =link_to new_group_path , class: "contents__left__top__box__icons__icon" do
             =fa_icon "edit"
