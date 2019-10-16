@@ -2,7 +2,9 @@ $(document).on('turbolinks:load', function() {
 
     function buildMessageHTML(message){
 
-      var basehtml =`<div class="contents__right__body__box" data-id=${message.id}'>
+      var content = message.content ? `${message.content}` : "";
+      var img = message.image.url ? `<img src= "${message.image.url}" class="lower-message__image">`: "";
+      var html =`<div class="contents__right__body__box" data-id=${message.id}'>
                       <div class="contents__right__body__box__message">
                         <div class="contents__right__body__box__message__username">
                           ${message.user_name} 
@@ -10,33 +12,15 @@ $(document).on('turbolinks:load', function() {
                         <div class="contents__right__body__box__message__date">
                           ${message.created_at}
                         </div>
-                    </div>`
-
-    if (message.content && message.image.url) {
-      //data-idが反映されるようにしている
-      var html =  basehtml + 
-                  `<div class="contents__right__body__box__comment">
-                      ${message.content}
-                    <img src= "${message.image.url}" class="lower-message__image">
-                    </div>
-                  </div>`
-    } 
-    else if (message.content) {
-      //同様に、data-idが反映されるようにしている
-      var html =  basehtml + 
-                  `<div class="contents__right__body__box__comment">
-                      ${message.content}
-                   </div>`
-    } 
-    else if (message.image.url) {
-      //同様に、data-idが反映されるようにしている
-      var html =   basehtml +
-                   `<div class="contents__right__body__box__comment">
-                      <img src="${message.image.url}" class="lower-message__image">
-                    </div>`
+                     </div>
+                     <div class="contents__right__body__box__comment">
+                       ${content}
+                       ${img}
+                     </div>
+                     </div>`
+      return html;
     };
-    return html;
-  };
+    
 
   $('#new_message').on('submit',function(e){
     e.preventDefault();
@@ -65,10 +49,6 @@ $(document).on('turbolinks:load', function() {
       $('.contents__right__footer__textbox__btn').attr('disabled',false);
     })
   });
-
-
-
- 
 
   //  自動更新
   var reloadMessages = function() {
