@@ -38,6 +38,7 @@ html body {
   
     &__body{
       background-color: #2f3e51;
+      overflow: scroll;
       padding: 0 20px;
       height: calc(100vh - 100px);
       &__groups{
