@@ -3,7 +3,7 @@
     %p.contents__right__body__box__message__username
       =message.user.name
     %p.contents__right__body__box__message__date
-      =message.created_at.strftime("%Y/%m/%d %H:%M")
+      =message.created_at.strftime("%Y-%m-%d %H:%M")
   .contents__right__body__box__comment
     -if message.content.present?
       =message.content

@@ -9,9 +9,9 @@
               = current_user.name
             .contents__left__top__box__icons
               =link_to new_group_path , class: "contents__left__top__box__icons__icon" do
-                =fa_icon "edit"
+                =fa_icon"edit"
               =link_to edit_user_path(current_user), class: "contents__left__top__box__icons__icon" do
-                =fa_icon "cog"  
+                =fa_icon"cog"  
    
         .contents__left__body
           -current_user.groups.each do |group|
