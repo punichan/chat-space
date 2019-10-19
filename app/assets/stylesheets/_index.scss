@@ -27,6 +27,7 @@ html body {
         &__username{
           font-size: 16px;
           color: #FFFFFF;
+          font-weight: bold;
         }
         &__icons{
           &__icon{
@@ -46,13 +47,11 @@ html body {
         &__name{
           font-size: 15px;
           color: #FFFFFF;
-          font-weight: bold;
           padding: 20px 0 5px 0;
         }
         &__message{
           font-size: 11px;
           color: #FFFFFF;
-          font-weight: bold; 
         }
       }
     }
@@ -72,16 +71,21 @@ html body {
           font-size: 20px;
           color: #333333;
         }
-        &__menber-name{
+        &__men-box{
+          display: flex;
           font-size: 12px;
           color: #999999;
+          &__menber-name{
+            
+          }
         }
       }
       &__edit-btn{
         text-decoration: none;
         &__icon{
-        border: #38AEF0 solid;
+        border: #38AEF0 solid 1px;
         color: #38AEF0;
+        
         line-height: 40px;
         margin-top: 28px;
         padding: 0 20px;
@@ -119,7 +123,7 @@ html body {
     &__footer{
       height: 90px;
       width: 100%;
-      background-color: gray;
+      background-color: #ddd;
       position: absolute;
       bottom: 0;
       &__textbox{
