@@ -19,11 +19,21 @@ $(document).on('turbolinks:load', function() {
     return html;
   }
 
+  function  noUser(){
+    var html = `
+               <div class="chat-group-user clearfix">
+                <p class="chat-group-user__name">ユーザーが見つかりません</p>
+               </div>`
+    return html;
+}
+
     $("#user-search-field").on("keyup",function() {
-      var input = $(this).val();
-      console.log(this);
-      var href = '/users'
       
+      var input = $(this).val();
+      var href = '/users'
+
+      if (input !==""){
+
       $.ajax({
         type: 'GET',
         url: href,
@@ -35,6 +45,7 @@ $(document).on('turbolinks:load', function() {
       .done(function(users){
         $('#user-search-result').empty();
         if (users.length !==0) {
+          console.log(users);
           // フォーム下に要素を追加していく。
           users.forEach(function(user){
             var html = appendUser(user);
@@ -42,16 +53,22 @@ $(document).on('turbolinks:load', function() {
           })
         }
 
-        if(input.length === 0 ){
-          $('#user-search-result').empty();
+        if (users.length ===0) {
+          var html = noUser();
+          $('#user-search-result').append(html);
         }
        })
 
        .fail(function(){
        alert('検索に失敗しました');
        });
-    });
+      }
 
+      else {
+        $('#user-search-result').empty();
+      }
+      
+    });
       // 追加ボタンにイベントを発火させる
       $('#user-search-result').on('click','.user-search-add',function(){
         var add_data = $(this).data();
@@ -62,5 +79,5 @@ $(document).on('turbolinks:load', function() {
 
       $('#user-add-result').on('click','.user-search-remove',function(){
         $(this).parent().remove();
-      })
+      });
 });
