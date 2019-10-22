@@ -45,7 +45,6 @@ $(document).on('turbolinks:load', function() {
       .done(function(users){
         $('#user-search-result').empty();
         if (users.length !==0) {
-          console.log(users);
           // フォーム下に要素を追加していく。
           users.forEach(function(user){
             var html = appendUser(user);
